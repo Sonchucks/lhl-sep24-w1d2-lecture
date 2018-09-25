@@ -28,13 +28,22 @@ function sum(array) {
 
 // MAIN
 var args = process.argv.slice(2);
-
 console.log("args", args);
 
-var numbers = convertToNumber(args);
+var command = args[0];
+var arrayOfNumbers = args.slice(1);
+
+var numbers = convertToNumber(arrayOfNumbers);
 
 console.log("numbers", numbers);
 
-var output = sum(numbers);
+var output;
+
+if (command === "add") {
+  output = sum(numbers);
+} else {
+  console.log("Please use either the add or sub command.");
+  process.exit(0);
+}
 
 console.log("Result:", output);
