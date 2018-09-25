@@ -26,15 +26,41 @@ function sum(array) {
   return output;
 }
 
+function sub(array) {
+  var output = 0;
+  for (var i = 0; i < array.length; i++) {
+    var number = array[i];
+    output -= number;
+  }
+
+  return output;
+}
+
+function processCommand(cmd, numbers) {
+  if (cmd === "add") {
+    return sum(numbers);
+  } else if (cmd === "sub") {
+    return sub(numbers);
+  } else {
+    return null;
+  }
+}
+
 // MAIN
 var args = process.argv.slice(2);
-
 console.log("args", args);
 
-var numbers = convertToNumber(args);
+var command = args[0];
+var arrayOfNumbers = args.slice(1);
+
+var numbers = convertToNumber(arrayOfNumbers);
 
 console.log("numbers", numbers);
 
-var output = sum(numbers);
+var output = processCommand(command, numbers);
 
-console.log("Result:", output);
+if (output === null) {
+  console.log("Please use either the add or sub command.");
+} else {
+  console.log("Result:", output);
+}
