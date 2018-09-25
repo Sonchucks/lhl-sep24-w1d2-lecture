@@ -7,8 +7,10 @@ function convertToNumber(arrayOfNumbers) {
   var numbers = [];
 
   for (var i = 0; i < arrayOfNumbers.length; i++) {
-    var number = parseInt(arrayOfNumbers[i], 10);
-    numbers.push(number);
+    var number = Number(arrayOfNumbers[i]);
+    if (Number.isInteger(number)) {
+      numbers.push(number);
+    }
   }
 
   return numbers;
