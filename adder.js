@@ -6,3 +6,18 @@
 var args = process.argv.slice(2);
 
 console.log("args", args);
+
+function convertToNumber(arrayOfNumbers) {
+  var numbers = [];
+
+  for (var i = 0; i < arrayOfNumbers.length; i++) {
+    var number = parseInt(arrayOfNumbers[i], 10);
+    numbers.push(number);
+  }
+
+  return numbers;
+}
+
+var numbers = convertToNumber(args);
+
+console.log("numbers", numbers);
