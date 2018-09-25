@@ -26,6 +26,16 @@ function sum(array) {
   return output;
 }
 
+function sub(array) {
+  var output = 0;
+  for (var i = 0; i < array.length; i++) {
+    var number = array[i];
+    output -= number;
+  }
+
+  return output;
+}
+
 // MAIN
 var args = process.argv.slice(2);
 console.log("args", args);
@@ -41,6 +51,8 @@ var output;
 
 if (command === "add") {
   output = sum(numbers);
+} else if (command === "sub") {
+  output = sub(numbers);
 } else {
   console.log("Please use either the add or sub command.");
   process.exit(0);
