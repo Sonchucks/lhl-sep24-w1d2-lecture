@@ -36,6 +36,16 @@ function sub(array) {
   return output;
 }
 
+function processCommand(cmd, numbers) {
+  if (cmd === "add") {
+    return sum(numbers);
+  } else if (cmd === "sub") {
+    return sub(numbers);
+  } else {
+    return null;
+  }
+}
+
 // MAIN
 var args = process.argv.slice(2);
 console.log("args", args);
@@ -47,15 +57,10 @@ var numbers = convertToNumber(arrayOfNumbers);
 
 console.log("numbers", numbers);
 
-var output;
+var output = processCommand(command, numbers);
 
-if (command === "add") {
-  output = sum(numbers);
-} else if (command === "sub") {
-  output = sub(numbers);
-} else {
+if (output === null) {
   console.log("Please use either the add or sub command.");
-  process.exit(0);
+} else {
+  console.log("Result:", output);
 }
-
-console.log("Result:", output);
